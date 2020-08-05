@@ -1,20 +1,16 @@
 import React from "react";
-import "./App.css";
+
 
 
 
 class Stopwatch extends React.Component {
-    /**
-       * state
-       */
+  
     state = {
         timerOn: false,
         timerStart: 0,
         timerTime: 0
     };
-    /**
-     * Starting the Stopwatch timer
-     */
+
     startTimer = () => {
         this.setState({
             timerOn: true,
@@ -27,9 +23,7 @@ class Stopwatch extends React.Component {
             });
         }, 10);
     };
-    /**
-     * Stop and Reset
-     */
+ 
     stopTimer = () => {
         this.setState({ timerOn: false });
         clearInterval(this.timer);
@@ -41,9 +35,7 @@ class Stopwatch extends React.Component {
         });
     };
     render() {
-        /**
-         * Formatting and Display
-         */
+      
         const { timerTime } = this.state;
         let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2);
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
@@ -55,16 +47,17 @@ class Stopwatch extends React.Component {
                 <div className="Stopwatch-display">
                     {hours} : {minutes} : {seconds} : {centiseconds}
                     {this.state.timerOn === false && this.state.timerTime === 0 && (
-                        <button onClick={this.startTimer}>Start</button>
+                        
+                       <p><button onClick={this.startTimer}>Start</button></p> 
                     )}
                     {this.state.timerOn === true && (
-                        <button onClick={this.stopTimer}>Stop</button>
+                        <p><button onClick={this.stopTimer}>Stop</button></p>
                     )}
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                        <button onClick={this.startTimer}>Resume</button>
+                        <p><button onClick={this.startTimer}>Resume</button></p>
                     )}
                     {this.state.timerOn === false && this.state.timerTime > 0 && (
-                        <button onClick={this.resetTimer}>Reset</button>
+                        <p><button onClick={this.resetTimer}>Reset</button></p>
                     )}
                 </div>
             </div>
