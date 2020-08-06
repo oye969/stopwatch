@@ -5,13 +5,13 @@ import './App.css';
 
 
 class Stopwatch extends React.Component {
-  
+    //setting state to store timer data and keep track.
     state = {
         timerOn: false,
         timerStart: 0,
         timerTime: 0
     };
-    // setstate for the start timer that handles the commencement of stopwatch
+    // setting interval for the start timer that handles the commencement of stopwatch
     startTimer = () => {
         this.setState({
             timerOn: true,
@@ -24,11 +24,12 @@ class Stopwatch extends React.Component {
             });
         }, 10);
     };
-    // setstate for the stop timer that handles the stoppage of stopwatch
+    // function for the stop timer that handles the stoppage of stopwatch
     stopTimer = () => {
         this.setState({ timerOn: false });
         clearInterval(this.timer);
     };
+    // this returns the timestart back to 0
     resetTimer = () => {
         this.setState({
             timerStart: 0,
@@ -36,13 +37,14 @@ class Stopwatch extends React.Component {
         });
     };
     render() {
-        //rendering The Math.floor() function to return the largest integer less than or equal to a given number
+        //rendering The Math.floor() helps display the time displaying hours, minutes, seconds and centiseconds
         const { timerTime } = this.state;
         let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2);
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
         let minutes = ("0" + (Math.floor(timerTime / 60000) % 60)).slice(-2);
         let hours = ("0" + Math.floor(timerTime / 3600000)).slice(-2);
         return (
+            //this display the buttons for control. To start, pause and reset.
             <div className="Stopwatch">
                 <div className="Stopwatch-header">Stopwatch</div>
                 <div className="Stopwatch-display">
