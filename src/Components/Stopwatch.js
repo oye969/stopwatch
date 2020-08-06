@@ -11,7 +11,7 @@ class Stopwatch extends React.Component {
         timerStart: 0,
         timerTime: 0
     };
-
+    // setstate for the start timer that handles the commencement of stopwatch
     startTimer = () => {
         this.setState({
             timerOn: true,
@@ -24,7 +24,7 @@ class Stopwatch extends React.Component {
             });
         }, 10);
     };
- 
+    // setstate for the stop timer that handles the stoppage of stopwatch
     stopTimer = () => {
         this.setState({ timerOn: false });
         clearInterval(this.timer);
@@ -36,7 +36,7 @@ class Stopwatch extends React.Component {
         });
     };
     render() {
-      
+        //rendering The Math.floor() function to return the largest integer less than or equal to a given number
         const { timerTime } = this.state;
         let centiseconds = ("0" + (Math.floor(timerTime / 10) % 100)).slice(-2);
         let seconds = ("0" + (Math.floor(timerTime / 1000) % 60)).slice(-2);
